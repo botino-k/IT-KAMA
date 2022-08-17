@@ -3,16 +3,16 @@ import MyPosts from "./MyPosts/MyPosts.jsx";
 
 const Profile = () => {
   return (
-    <section className={stl.profile}>
+    <section className='content'>
       <div className={stl.background} > </div>
       <div className={stl.user} >
         <div className={stl.avatar}></div>
         <h1>Имя пользователя</h1>
         <div>Описание пользователя</div>
       </div>
-      <MyPosts/>
+      <MyPosts />
     </section>
   )
 };
-  
-  export default Profile;
+
+export default Profile;

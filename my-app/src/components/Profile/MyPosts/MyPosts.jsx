@@ -6,13 +6,13 @@ const MyPosts = () => {
     <section className={stl.wrapper}>
       <h1>Что нового?</h1>
       <form className={stl.form} >
-      <input type="text"  name="name"/>
-      <input type="submit" value="Submit"/>
-       </form>
-        <Post/>
-        <Post/>
+        <input type="text" name="name" />
+        <input type="submit" value="Submit" />
+      </form>
+      <Post massage = 'hi!' likeCount = '4'/>
+      <Post massage = 'how!' likeCount = '1'/>
     </section>
   )
 };
-  
-  export default MyPosts;
+
+export default MyPosts;

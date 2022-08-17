@@ -1,15 +1,15 @@
 import stl from './NavBar.module.css'
 
-const NavBar = ()=>{
-  return(
-  <nav>
-    <div className={stl.link}>Profile</div>
-    <div className={stl.link}>Message</div>
-    <div className={stl.link}>News</div>
-    <div className={stl.link}>Music</div>
-    <div className={stl.link}>Settings</div>
-  </nav>
+const NavBar = () => {
+  return (
+    <nav>
+      <div className={stl.link}><a href='profile'>Profile</a></div>
+      <div className={stl.link}><a href='message'>Message</a></div>
+      <div className={stl.link}><a href='news'>News</a></div>
+      <div className={stl.link}><a href='music'>Music</a></div>
+      <div className={stl.link}><a href='settings'>Settings</a></div>
+    </nav>
   )
-  };
-  
-  export default NavBar;
+};
+
+export default NavBar;

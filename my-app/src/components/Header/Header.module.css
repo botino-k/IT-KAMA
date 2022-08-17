@@ -1,11 +1,8 @@
 header{
   grid-area: header;
   background-color: rgb(175, 166, 120);
-
 }
 
 .logo img{
   max-width: 40px;
-
- }
-
+}
