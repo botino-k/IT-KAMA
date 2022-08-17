@@ -2,3 +2,8 @@ nav{
   grid-area: nav;
   background-color: rgb(217, 215, 153);
 }
+
+
+.active{
+  color: brown;
+}

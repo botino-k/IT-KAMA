@@ -1,15 +1,17 @@
 import stl from './NavBar.module.css'
+import { NavLink } from "react-router-dom";
 
 const NavBar = () => {
   return (
     <nav>
-      <div className={stl.link}><a href='profile'>Profile</a></div>
-      <div className={stl.link}><a href='message'>Message</a></div>
-      <div className={stl.link}><a href='news'>News</a></div>
-      <div className={stl.link}><a href='music'>Music</a></div>
-      <div className={stl.link}><a href='settings'>Settings</a></div>
+      <div className={stl.link}><NavLink className={(el)=>el.isActive? stl.active : ''} to='profile'>Profile</NavLink></div>
+      <div className={stl.link}><NavLink className={(el)=>el.isActive? stl.active : ''} to='message'>Message</NavLink></div>
+      <div className={stl.link}><NavLink className={(el)=>el.isActive? stl.active : ''} to='news'>News</NavLink></div>
+      <div className={stl.link}><NavLink className={(el)=>el.isActive? stl.active : ''} to='music'>Music</NavLink></div>
+      <div className={stl.link}><NavLink className={(el)=>el.isActive? stl.active : ''} to='settings'>Settings</NavLink></div>
     </nav>
   )
 };
 
 export default NavBar;
+
