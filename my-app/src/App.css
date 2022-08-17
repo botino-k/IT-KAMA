@@ -1,44 +1,12 @@
 .wrapper{
 display: grid;
 grid-template-columns:  2fr 10fr ;
-grid-template-rows: 50px calc(100vh - 50px);
+grid-template-rows: 50px auto;
 grid-template-areas: 
 "header header"
 "nav content";
 }
 
-header{
-  grid-area: header;
-  background-color: rgb(232, 176, 156);
-}
-
-nav{
-  grid-area: nav;
-  background-color: rgb(225, 199, 149);
-}
-
-.profile{
-  grid-area: content;
-  background-color: rgb(223, 206, 127);
-  padding: 10px;
-
-}
-
-.header__logo img{
- max-width: 40px;
-}
-
 img{
   width: 100%;
-}
-
-.profile__background{
-  height: 200px;
-  background-position: center;
-  background-size: cover;
-  background-image: url("https://thumb.tildacdn.com/tild6235-6466-4339-b065-343963343033/-/format/webp/shutterstock_1724594.jpg");
-}
-
-.profile__background img{
-  max-height: 100%;
 }
