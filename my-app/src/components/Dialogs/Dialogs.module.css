@@ -1,0 +1,12 @@
+.usersWrapper{
+
+}
+
+.active{
+  color: brown;
+}
+
+.dialogsWrapper{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}

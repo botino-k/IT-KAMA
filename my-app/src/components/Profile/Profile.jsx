@@ -1,7 +1,8 @@
 import stl from './Profile.module.css'
 import MyPosts from "./MyPosts/MyPosts.jsx";
 
-const Profile = () => {
+const Profile = (props) => {
+
   return (
     <section className='content'>
       <div className={stl.background} > </div>
@@ -10,7 +11,7 @@ const Profile = () => {
         <h1>Имя пользователя</h1>
         <div>Описание пользователя</div>
       </div>
-      <MyPosts />
+      <MyPosts posts = {props.posts} />
     </section>
   )
 };
