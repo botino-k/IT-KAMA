@@ -9,6 +9,7 @@ const NavBar = () => {
       <div className={stl.link}><NavLink className={(el)=>el.isActive? stl.active : ''} to='news'>News</NavLink></div>
       <div className={stl.link}><NavLink className={(el)=>el.isActive? stl.active : ''} to='music'>Music</NavLink></div>
       <div className={stl.link}><NavLink className={(el)=>el.isActive? stl.active : ''} to='settings'>Settings</NavLink></div>
+      <div className={stl.link}><NavLink className={(el)=>el.isActive? stl.active : ''} to='hookex'>Hook</NavLink></div>
     </nav>
   )
 };

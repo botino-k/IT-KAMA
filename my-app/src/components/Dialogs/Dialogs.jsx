@@ -20,6 +20,8 @@ const DialogUserMassage= (props) => {
 }
 
 const Dialogs = (props) => {
+  const a = props.state.userData.map((el)=> <DialogUserItem name= {el.name} id= {el.id}/> )
+  const b = props.state.userMassage.map((el)=> <DialogUserMassage massage= {el.massage} /> )
   return (
  
     <section className='content'>
@@ -27,11 +29,17 @@ const Dialogs = (props) => {
         <div className={stl.usersWrapper}>
           <h1>Users:</h1>
 
-        {props.userData.map((el)=> <DialogUserItem name= {el.name} id= {el.id}/> )}
+        {a}
         </div>
         <div>
           <h1>Massages:</h1>
-          {props.userMassage.map((el)=> <DialogUserMassage massage= {el.massage} /> )}
+          {b}
+          <form>
+          <textarea>
+
+          </textarea>
+          <button type='submit'>Отправить</button>
+          </form>
         </div>
       </div>
     </section>
