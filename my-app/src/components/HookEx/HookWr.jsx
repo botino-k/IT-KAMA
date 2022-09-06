@@ -14,7 +14,7 @@ const HookWrapper = (props) => {
   return (
     <section>
       <div><button onClick={counter}> click</button></div>
-      <Context.Provider value={value}>
+      <Context.Provider  value={[value, setValue]}>
       <HookEx/>
       </Context.Provider>
 
