@@ -5,7 +5,7 @@ class Clock extends React.Component {
     super(props);
     this.state = {date: new Date()};//Конструктор — это единственное место, где вы можете присвоить значение this.state напрямую.
   }
-// «методами жизненного цикла» (lifecycle methods).
+// «методы жизненного цикла» (lifecycle methods).
   componentDidMount() { //запускается после того, как компонент отрендерился в DOM
     this.timerID = setInterval(
       () => this.tick(),
@@ -18,7 +18,7 @@ class Clock extends React.Component {
   }
 
   tick() {
-    this.setState({
+    this.setState({//setState- планирует обновление внутреннего состояния компонента
       date: new Date()
     });
   }

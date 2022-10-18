@@ -10,7 +10,7 @@ const HookWrapper = (props) => {
   const[value, setValue] = useState(0)
 
   const counter = ()=>setValue(value+1)
-   
+
   return (
     <section>
       <div><button onClick={counter}> click</button></div>

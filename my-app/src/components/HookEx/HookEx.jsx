@@ -17,7 +17,6 @@ const HookEx = () => {
       <div>{value}</div>
       <span onClick={ccc}>useCon'text</span>
       </div>
-      
       </section>
     );
 

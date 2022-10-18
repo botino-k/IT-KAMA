@@ -4,8 +4,8 @@ import Post from "./Post/Post.jsx";
 
 const MyPosts = (props) => {
 
-  const a = props.posts.map((el)=> <Post massage= {el.massage} likeCount= {el.likeCount}/> )
-  let inputData = React.createRef()
+  const posts = props.posts.map((el)=> <Post massage= {el.massage} likeCount= {el.likeCount}/> )
+  let inputData = React.createRef() // реакт говорит, что ref нужно минимизировать. Причину не изучала
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -13,8 +13,10 @@ const MyPosts = (props) => {
   }
 
   function massageAllart() {
-
+    if(inputData.current.value){
+    props.addPost(inputData.current.value) // благодаря ref имеем доступ к inputData
     console.log(`data fro form:${inputData.current.value}`);
+    inputData.current.value=''}
   }
 
   return (
@@ -24,7 +26,7 @@ const MyPosts = (props) => {
         <input ref={inputData}  type="text" name="name" />
         <input onClick={massageAllart} type="submit" value="Отправить" />
       </form>
-      {a}
+      {posts}
     </section>
   )
 };
