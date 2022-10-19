@@ -3,15 +3,15 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import { BrowserRouter} from "react-router-dom";
-import {addPost} from './components/redux/state'
-
+import {addPost, updateNewChangeInput} from './components/redux/state'
+import state from './components/redux/state'
 
   const root = ReactDOM.createRoot(document.getElementById("root"));
 
-  export const rerenderEntireTree = (state) => {
+  export const rerenderEntireTree = () => {
   root.render(
     <BrowserRouter>
-      <App state={state} addPost={addPost} />
+      <App state={state} addPost={addPost} updateNewChangeInput={updateNewChangeInput} />
     </BrowserRouter>
   )
 }

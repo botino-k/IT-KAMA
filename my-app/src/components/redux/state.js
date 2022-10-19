@@ -1,4 +1,4 @@
-import {rerenderEntireTree } from '../../render'
+import {fix } from '../../index'
 
 
 const state = {
@@ -9,6 +9,7 @@ const state = {
       { massage: "how!", likeCount: "1",  id: "2"  },
       { massage: "hhhh!", likeCount: "2", id: "3"  },
     ],
+    newChangeInput: `what's up`
   },
 
   massagePage: {
@@ -37,7 +38,13 @@ export let addPost = (postMsg) => {
     id: "4",
   };
   state.profilePage.posts.push(newPost);
-  rerenderEntireTree(state)
+  state.profilePage.newChangeInput= ''
+  fix()
+};
+
+export let updateNewChangeInput = (postInput) => {
+  state.profilePage.newChangeInput = postInput;
+  fix()
 };
 
 export default state;

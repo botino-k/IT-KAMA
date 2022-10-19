@@ -9,21 +9,33 @@ const MyPosts = (props) => {
 
   function handleSubmit(e) {
     e.preventDefault();
-   // console.log('Отправлена форма.');
   }
 
   function massageAllart() {
     if(inputData.current.value){
     props.addPost(inputData.current.value) // благодаря ref имеем доступ к inputData
-    console.log(`data fro form:${inputData.current.value}`);
-    inputData.current.value=''}
+}
   }
 
+  function onChangeInput(){
+  props.updateNewChangeInput(inputData.current.value)
+  }
+
+  function onFocusInput(){
+    props.updateNewChangeInput('')
+   }
+
   return (
-    <section  className={stl.wrapper}>
+    <section className={stl.wrapper}>
       <h1>Что нового?</h1>
       <form onSubmit={handleSubmit} className={stl.form} >
-        <input ref={inputData}  type="text" name="name" />
+        <input
+          onFocus={onFocusInput}
+          onChange={onChangeInput}
+          ref={inputData}
+          type="text"
+          name="name"
+          value={props.newChangeInput} />
         <input onClick={massageAllart} type="submit" value="Отправить" />
       </form>
       {posts}

@@ -1,7 +1,6 @@
 import stl from './Post.module.css'
 
 const Post = (props) => {
-
   return (
     <article className={stl.wrapper}>
       <div className={stl.form}>
