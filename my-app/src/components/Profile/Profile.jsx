@@ -13,9 +13,8 @@ const Profile = (props) => {
       </div>
       <MyPosts
         posts = {props.profilePage.posts}
-        addPost={props.addPost}
         newChangeInput = {props.profilePage.newChangeInput}
-        updateNewChangeInput={props.updateNewChangeInput} />
+        dispatch={props.dispatch} />
     </section>
   )
 };

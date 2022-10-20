@@ -13,8 +13,8 @@ import store from './components/redux/state'
     <BrowserRouter>
       <App
       state={state.getState.apply(state)}
-        addPost={state.addPost.bind(state)}
-        updateNewChangeInput={state.updateNewChangeInput.bind(state)} />
+      dispatch={state.dispatch.bind(state)}
+         />
     </BrowserRouter>
   )
 }

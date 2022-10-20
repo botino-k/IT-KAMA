@@ -27,12 +27,19 @@ let store = {
       ],
     },
   },
-  _rerenderEntireTree () {
+
+  getState() {
+    return this._state;
+  },
+
+  _rerenderEntireTree() {
     console.log("do");
   },
 
-  getState(){return this._state},
-
+  subscriber(observer) {
+    this._rerenderEntireTree = observer;
+  },
+  /*
   addPost(postMsg) {
     let newPost = {
       massage: postMsg,
@@ -44,17 +51,32 @@ let store = {
     this._rerenderEntireTree(this);
   },
 
-  updateNewChangeInput (postInput) {
+  updateNewChangeInput(postInput) {
     this._state.profilePage.newChangeInput = postInput;
-    this._rerenderEntireTree(this)
+    this._rerenderEntireTree(this);
+  },*/
+
+  // в dispatch кладутся функции, которые меняют компонент
+  // action-это объект с обязательным {type:string}
+  dispatch(action) {
+    if (action.type === "ADD-POST") {
+
+      let newPost = {
+        massage: action.postMsg,
+        likeCount: "0",
+        id: "4",
+      };
+      this._state.profilePage.posts.push(newPost)
+      console.log(this._state.profilePage.newChangeInput)
+      console.log(this)
+      this._state.profilePage.newChangeInput = ""
+      this._rerenderEntireTree(this)
+    } else if (action.type === "UPDATE-NEW-CHANGE-INPUT") {
+
+      this._state.profilePage.newChangeInput = action.postInput;
+      this._rerenderEntireTree(this);
+    }
   },
-
-  subscriber (observer) {
-    this._rerenderEntireTree = observer;
-  },
-
-
-
 };
 
-export default store
+export default store;

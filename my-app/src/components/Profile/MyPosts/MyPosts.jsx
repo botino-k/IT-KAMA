@@ -13,17 +13,17 @@ const MyPosts = (props) => {
 
   function massageAllart() {
     if(inputData.current.value){
-    props.addPost(inputData.current.value) // благодаря ref имеем доступ к inputData
+      props.dispatch({type:"ADD-POST", postMsg:inputData.current.value})// благодаря ref имеем доступ к inputData
 }
   }
 
   function onChangeInput(){
-  props.updateNewChangeInput(inputData.current.value)
+    props.dispatch({type:"UPDATE-NEW-CHANGE-INPUT", postInput:inputData.current.value})
   }
 
-  function onFocusInput(){
-    props.updateNewChangeInput('')
-   }
+   function onFocusInput(){
+     props.dispatch({type:"UPDATE-NEW-CHANGE-INPUT", postInput:''})
+    }
 
   return (
     <section className={stl.wrapper}>

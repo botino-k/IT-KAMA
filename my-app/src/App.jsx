@@ -14,11 +14,8 @@ function App(props) {
       <NavBar />
       <Routes>
         <Route path="/message/*" element={<Dialogs state={props.state.massagePage} />} />
-        <Route path="/profile" element={<Profile profilePage={props.state.profilePage} addPost={props.addPost} updateNewChangeInput={props.updateNewChangeInput} />} />
-        <Route path="" element={<Profile
-          profilePage={props.state.profilePage}
-          addPost={props.addPost}
-          updateNewChangeInput={props.updateNewChangeInput} />} />
+        <Route path="/profile" element={<Profile profilePage={props.state.profilePage} dispatch={props.dispatch}  />} />
+        {/* <Route path="" element={<Profile profilePage={props.state.profilePage} dispatch={props.dispatch} />} /> */}
         <Route path="/hookex" element={<HookWrapper />} />
       </Routes>
     </div>
