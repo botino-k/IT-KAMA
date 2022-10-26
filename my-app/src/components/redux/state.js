@@ -1,3 +1,6 @@
+const UPDATE_NEW_CHANGE_INPUT="UPDATE-NEW-CHANGE-INPUT";
+const ADD_POST="ADD-POST";
+
 let store = {
   _state: {
     profilePage: {
@@ -39,27 +42,10 @@ let store = {
   subscriber(observer) {
     this._rerenderEntireTree = observer;
   },
-  /*
-  addPost(postMsg) {
-    let newPost = {
-      massage: postMsg,
-      likeCount: "0",
-      id: "4",
-    };
-    this._state.profilePage.posts.push(newPost);
-    this._state.profilePage.newChangeInput = "";
-    this._rerenderEntireTree(this);
-  },
-
-  updateNewChangeInput(postInput) {
-    this._state.profilePage.newChangeInput = postInput;
-    this._rerenderEntireTree(this);
-  },*/
-
   // в dispatch кладутся функции, которые меняют компонент
   // action-это объект с обязательным {type:string}
   dispatch(action) {
-    if (action.type === "ADD-POST") {
+    if (action.type === ADD_POST) {
 
       let newPost = {
         massage: action.postMsg,
@@ -71,7 +57,7 @@ let store = {
       console.log(this)
       this._state.profilePage.newChangeInput = ""
       this._rerenderEntireTree(this)
-    } else if (action.type === "UPDATE-NEW-CHANGE-INPUT") {
+    } else if (action.type === UPDATE_NEW_CHANGE_INPUT) {
 
       this._state.profilePage.newChangeInput = action.postInput;
       this._rerenderEntireTree(this);
@@ -80,3 +66,13 @@ let store = {
 };
 
 export default store;
+
+export const addPostActionCreator = (postMsg) => ({
+  type: ADD_POST,
+  postMsg,
+});
+
+export const updateNewChangeInputActionCreator = (postInput) => ({
+  type: UPDATE_NEW_CHANGE_INPUT,
+  postInput,
+});

@@ -1,7 +1,7 @@
 import React from 'react';
 import stl from './MyPosts.module.css'
 import Post from "./Post/Post.jsx";
-
+import {addPostActionCreator, updateNewChangeInputActionCreator} from '../../redux/state'
 const MyPosts = (props) => {
 
   const posts = props.posts.map((el)=> <Post massage= {el.massage} likeCount= {el.likeCount}/> )
@@ -13,16 +13,16 @@ const MyPosts = (props) => {
 
   function massageAllart() {
     if(inputData.current.value){
-      props.dispatch({type:"ADD-POST", postMsg:inputData.current.value})// благодаря ref имеем доступ к inputData
+      props.dispatch(addPostActionCreator(inputData.current.value))// благодаря ref имеем доступ к inputData
 }
   }
 
   function onChangeInput(){
-    props.dispatch({type:"UPDATE-NEW-CHANGE-INPUT", postInput:inputData.current.value})
+    props.dispatch(updateNewChangeInputActionCreator(inputData.current.value))
   }
 
    function onFocusInput(){
-     props.dispatch({type:"UPDATE-NEW-CHANGE-INPUT", postInput:''})
+     props.dispatch(updateNewChangeInputActionCreator(''))
     }
 
   return (

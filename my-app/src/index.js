@@ -16,7 +16,7 @@ import store from './components/redux/state'
       dispatch={state.dispatch.bind(state)}
          />
     </BrowserRouter>
-  )
+  ) 
 }
 rerenderEntireTree(store)
 store.subscriber(rerenderEntireTree)
