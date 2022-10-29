@@ -1,5 +1,7 @@
+import React from 'react';
 import stl from './Dialogs.module.css'
 import { NavLink } from "react-router-dom";
+import {addMassageActionCreator, updateNewTextareaActionCreator} from '../redux/state'
 
 const DialogUserItem = (props) => {
   return (
@@ -18,8 +20,33 @@ const DialogUserMassage = (props) => {
 }
 
 const Dialogs = (props) => {
+
+  function handleSubmit(e) {
+    e.preventDefault();
+  }
+
+  let textareaData = React.createRef()
+
   const a = props.state.userData.map((el) => <DialogUserItem name={el.name} id={el.id} />)
   const b = props.state.userMassage.map((el) => <DialogUserMassage massage={el.massage} />)
+ 
+ 
+  function massagePost() {
+    if(textareaData.current.value){
+      props.dispatch(addMassageActionCreator(textareaData.current.value))
+      textareaData.current.value = ""
+    }
+  }
+
+  function onChangeTextarea(){
+    props.dispatch(updateNewTextareaActionCreator(textareaData.current.value))
+  }
+
+   function onFocusTextarea(){
+     props.dispatch(updateNewTextareaActionCreator(''))
+    }
+
+
   return (
 
     <section className='content'>
@@ -32,11 +59,16 @@ const Dialogs = (props) => {
         <div>
           <h1>Massages:</h1>
           {b}
-          <form>
-            <textarea>
-
+          <form onSubmit={handleSubmit}>
+            <textarea
+              onFocus={onFocusTextarea}
+              onChange={onChangeTextarea}
+              ref={textareaData}
+              value={props.newChangeTextarea}
+            >
             </textarea>
-            <button type='submit'>Отправить</button>
+            <button
+              onClick={massagePost} type='submit'>Отправить</button>
           </form>
         </div>
       </div>
