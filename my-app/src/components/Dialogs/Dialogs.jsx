@@ -1,7 +1,7 @@
 import React from 'react';
 import stl from './Dialogs.module.css'
 import { NavLink } from "react-router-dom";
-import {addMassageActionCreator, updateNewTextareaActionCreator} from '../redux/state'
+import {addMassageActionCreator, updateNewTextareaActionCreator} from '../redux/dialogsReducer.js'
 
 const DialogUserItem = (props) => {
   return (

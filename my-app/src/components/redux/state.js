@@ -1,8 +1,5 @@
-const UPDATE_NEW_CHANGE_INPUT="UPDATE-NEW-CHANGE-INPUT";
-const ADD_POST="ADD-POST";
-const UPDATE_NEW_CHANGE_MASSAGE="UPDATE-NEW-CHANGE-MASSAGE";
-const ADD_MASSAGE="ADD-MASSAGE";
-
+import dialogsReducer from './dialogsReducer'
+import profileReducer from './profileReducer'
 
 let store = {
   _state: {
@@ -55,54 +52,10 @@ let store = {
   // в dispatch кладутся функции, которые меняют компонент
   // action-это объект с обязательным {type:string}
   dispatch(action) {
-    if (action.type === ADD_POST) {
-      let newPost = {
-        massage: action.postMsg,
-        likeCount: "0",
-        id: "4",
-      };
-      this._state.profilePage.posts.push(newPost)
-      this._state.profilePage.newChangeInput = ""
-      this._rerenderEntireTree(this)
-
-    } else if (action.type === UPDATE_NEW_CHANGE_INPUT) {
-      this._state.profilePage.newChangeInput = action.postInput;
-      this._rerenderEntireTree(this);
-
-    } else if(action.type === ADD_MASSAGE) {
-      let newMsg = {
-        massage: action.postMassage,
-        id: "4",
-      };
-      this._state.massagePage.userMassage.push(newMsg)
-      this._state.massagePage.newChangeTextarea = ""
-      this._rerenderEntireTree(this)
-
-    }else if (action.type === UPDATE_NEW_CHANGE_MASSAGE) {
-      this._state.massagePage.newChangeTextarea = action.postTextarea;
-      this._rerenderEntireTree(this);
-    }
+    this._state.profilePage = profileReducer(this._state.profilePage, action) // благодаря reducer обновляем часть стейта
+    this._state.massagePage = dialogsReducer(this._state.massagePage, action)
+    this._rerenderEntireTree(this);
   },
 };
 
 export default store;
-
-export const addPostActionCreator = (postMsg) => ({
-  type: ADD_POST,
-  postMsg,
-});
-
-export const updateNewChangeInputActionCreator = (postInput) => ({
-  type: UPDATE_NEW_CHANGE_INPUT,
-  postInput,
-});
-
-export const addMassageActionCreator = (postMassage) => ({
-  type: ADD_MASSAGE,
-  postMassage,
-});
-
-export const updateNewTextareaActionCreator = (postTextarea) => ({
-  type: UPDATE_NEW_CHANGE_MASSAGE,
-  postTextarea,
-});

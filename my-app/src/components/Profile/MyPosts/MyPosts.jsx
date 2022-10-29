@@ -1,7 +1,7 @@
 import React from 'react';
 import stl from './MyPosts.module.css'
 import Post from "./Post/Post.jsx";
-import {addPostActionCreator, updateNewChangeInputActionCreator} from '../../redux/state'
+import {addPostActionCreator, updateNewChangeInputActionCreator} from '../../redux/profileReducer.js'
 const MyPosts = (props) => {
 
   const posts = props.posts.map((el)=> <Post massage= {el.massage} likeCount= {el.likeCount}/> )
