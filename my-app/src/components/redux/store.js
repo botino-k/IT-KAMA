@@ -46,7 +46,7 @@ let store = {
     console.log("do");
   },
 
-  subscriber(observer) {
+  subscribe(observer) {
     this._rerenderEntireTree = observer;
   },
   // в dispatch кладутся функции, которые меняют компонент

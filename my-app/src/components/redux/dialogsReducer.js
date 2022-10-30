@@ -11,7 +11,29 @@ export const updateNewTextareaActionCreator = (postTextarea) => ({
   postTextarea,
 });
 
-const dialogsReducer = (state, action) => {
+let initialState = {
+  userData: [
+    { name: "Mary", id: "1" },
+    { name: "Sasha", id: "2" },
+    { name: "Pert", id: "3" },
+    { name: "ff", id: "4" },
+    { name: "Tolik", id: "5" },
+  ],
+
+  userMassage: [
+    { massage: "SashaMarySasha", id: "1" },
+    { massage: "SashaSashaSasha", id: "2" },
+    { massage: "SashaPertSasha", id: "3" },
+    { massage: "SashaffSasha", id: "4" },
+    { massage: "SashaTolikSasha", id: "5" },
+  ],
+
+  newChangeTextarea: ``,
+
+}
+
+const dialogsReducer = (state = initialState, action) => {
+
   switch (action.type) {
     case ADD_MASSAGE:
       let newMsg = {

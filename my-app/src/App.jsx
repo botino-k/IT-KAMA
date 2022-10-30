@@ -14,11 +14,11 @@ function App(props) {
       <Header />
       <NavBar />
       <Routes>
-        <Route path="/message/*" element={<Dialogs state={props.state.massagePage}  dispatch={props.dispatch} />} />
-        <Route path="/profile" element={<Profile profilePage={props.state.profilePage} dispatch={props.dispatch}  />} />
+        <Route path="/message/*" element={<Dialogs state={props.state.dialogsReducer}  dispatch={props.dispatch} />} />
+        <Route path="/profile" element={<Profile profilePage={props.state.profileReducer} dispatch={props.dispatch}  />} />
         {/* <Route path="" element={<Profile profilePage={props.state.profilePage} dispatch={props.dispatch} />} /> */}
         <Route path="/hookex" element={<HookWrapper />} />
-        <Route path="/ref" element={<FileInput refPage={props.state.refPage.cardCollection}/>} />
+         <Route path="/ref" element={<FileInput />} />
       </Routes>
     </div>
   );

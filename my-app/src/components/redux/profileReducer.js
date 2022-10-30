@@ -11,7 +11,17 @@ export const updateNewChangeInputActionCreator = (postInput) => ({
   postInput,
 });
 
-const profileReducer = (state, action) => {
+let initialState = {
+  posts: [
+    { massage: "hi!", likeCount: "4", id: "1" },
+    { massage: "how!", likeCount: "1", id: "2" },
+    { massage: "hhhh!", likeCount: "2", id: "3" },
+  ],
+  newChangeInput: `what's up`,
+}
+
+const profileReducer = (state = initialState, action) => {
+
   //в state приходит только та часть, которая нужна конкретному reducer. в нашем случае (_state.profilePage)
   switch (action.type) {
     case ADD_POST:

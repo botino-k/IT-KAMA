@@ -1,10 +1,10 @@
-
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import { BrowserRouter} from "react-router-dom";
-import store from './components/redux/state'
+//import store from './components/redux/store'
+import store from './components/redux/store-redux'
 
   const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -12,11 +12,11 @@ import store from './components/redux/state'
   root.render(
     <BrowserRouter>
       <App
-      state={state.getState.apply(state)}
+      state={state.getState()}
       dispatch={state.dispatch.bind(state)}
          />
     </BrowserRouter>
-  ) 
+  )
 }
 rerenderEntireTree(store)
-store.subscriber(rerenderEntireTree)
+store.subscribe((()=>{rerenderEntireTree(store)}))
