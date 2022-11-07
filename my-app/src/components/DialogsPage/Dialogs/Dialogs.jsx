@@ -1,7 +1,6 @@
 import React from 'react';
 import stl from './Dialogs.module.css'
 import { NavLink } from "react-router-dom";
-import {addMassageActionCreator, updateNewTextareaActionCreator} from '../redux/dialogsReducer.js'
 
 const DialogUserItem = (props) => {
   return (
@@ -21,31 +20,27 @@ const DialogUserMassage = (props) => {
 
 const Dialogs = (props) => {
 
+  const a = props.userData.map((el) => <DialogUserItem name={el.name} id={el.id} />)
+  const b = props.userMassage.map((el) => <DialogUserMassage massage={el.massage} />)
+
+  let textareaData = React.createRef()
+
   function handleSubmit(e) {
     e.preventDefault();
   }
 
-  let textareaData = React.createRef()
-
-  const a = props.state.userData.map((el) => <DialogUserItem name={el.name} id={el.id} />)
-  const b = props.state.userMassage.map((el) => <DialogUserMassage massage={el.massage} />)
- 
- 
   function massagePost() {
-    if(textareaData.current.value){
-      props.dispatch(addMassageActionCreator(textareaData.current.value))
-      textareaData.current.value = ""
-    }
+    props.massagePost(textareaData.current.value)
+    //   textareaData.current.value = ""
   }
 
-  function onChangeTextarea(){
-    props.dispatch(updateNewTextareaActionCreator(textareaData.current.value))
+  function onChangeTextarea() {
+    props.onChangeTextarea(textareaData.current.value)
   }
 
-   function onFocusTextarea(){
-     props.dispatch(updateNewTextareaActionCreator(''))
-    }
-
+  function onFocusTextarea() {
+    props.onFocusTextarea()
+  }
 
   return (
 

@@ -1,5 +1,5 @@
 import stl from './Profile.module.css'
-import MyPosts from "./MyPosts/MyPosts.jsx";
+import MyPostsContainer from "./MyPosts/MyPostsContainer";
 
 const Profile = (props) => {
 
@@ -11,10 +11,7 @@ const Profile = (props) => {
         <h1>Имя пользователя</h1>
         <div>Описание пользователя</div>
       </div>
-      <MyPosts
-        posts = {props.profilePage.posts}
-        newChangeInput = {props.profilePage.newChangeInput}
-        dispatch={props.dispatch} />
+      <MyPostsContainer store = {props.store} />
     </section>
   )
 };

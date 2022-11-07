@@ -11,6 +11,8 @@ const NavBar = () => {
       <div className={stl.link}><NavLink className={(el)=>el.isActive? stl.active : ''} to='settings'>Settings</NavLink></div>
       <div className={stl.link}><NavLink className={(el)=>el.isActive? stl.active : ''} to='hookex'>Hook</NavLink></div>
       <div className={stl.link}><NavLink className={(el)=>el.isActive? stl.active : ''} to='ref'>ref</NavLink></div>
+      <div className={stl.link}><NavLink className={(el)=>el.isActive? stl.active : ''} to='classcomp'>Class Component</NavLink></div>
+
     </nav>
   )
 };
