@@ -1,35 +1,40 @@
 import React from 'react';
 import { addPostActionCreator, updateNewChangeInputActionCreator } from '../../redux/profileReducer.js'
 import MyPosts from './MyPosts'
-
+import ContextStore from '../../redux/ContextStore'
 // это контейнерная компонента, она может быть грязной, она снабжает презентационную чистую компоненту
 
 const MyPostsContainer = (props) => {
-  props.store.dispatch.bind(props.store.getState().profileReducer)
-  //debugger
-
-  const massagePublish = (text) => {
-    if (text) {
-      props.store.dispatch(addPostActionCreator(text))
-    }
-  }
-
-  const onChangeInput = (text) => {
-    props.store.dispatch(updateNewChangeInputActionCreator(text))
-  }
-
-  const onFocusInput = () => {
-    props.store.dispatch(updateNewChangeInputActionCreator(''))
-  }
 
   return (
-    <MyPosts
-      addNewPostText={massagePublish}
-      onChangeInput={onChangeInput}
-      onFocusInput={onFocusInput}
-      posts={props.store.getState().profileReducer.posts}
-      newChangeInput={props.store.getState().profileReducer.newChangeInput}
-    />
+    <ContextStore.Consumer>
+      {(value) => {
+        value.dispatch.bind(value.getState().profileReducer)
+        //debugger
+
+        const massagePublish = (text) => {
+          if (text) {
+            value.dispatch(addPostActionCreator(text))
+          }
+        }
+
+        const onChangeInput = (text) => {
+          value.dispatch(updateNewChangeInputActionCreator(text))
+        }
+
+        const onFocusInput = () => {
+          value.dispatch(updateNewChangeInputActionCreator(''))
+        }
+        return (
+          <MyPosts
+            addNewPostText={massagePublish}
+            onChangeInput={onChangeInput}
+            onFocusInput={onFocusInput}
+            posts={value.getState().profileReducer.posts}
+            newChangeInput={value.getState().profileReducer.newChangeInput}
+          />)
+      }}
+    </ContextStore.Consumer>
   )
 };
 

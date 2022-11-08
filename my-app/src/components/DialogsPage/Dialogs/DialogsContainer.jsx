@@ -1,36 +1,43 @@
 import React from 'react';
 import { addMassageActionCreator, updateNewTextareaActionCreator } from '../../redux/dialogsReducer'
 import Dialogs from './Dialogs'
-
+import ContextStore from '../../redux/ContextStore'
 // это контейнерная компонента, она может быть грязной, она снабжает презентационную чистую компоненту
 
 const DialogsContainer = (props) => {
-  props.store.dispatch.bind(props.store.getState().dialogsReducer)
-  //debugger
-
-  const massagePost = (text) => {
-    if (text) {
-      props.store.dispatch(addMassageActionCreator(text))
-    }
-  }
-
-  const onChangeTextarea = (text) => {
-    props.store.dispatch(updateNewTextareaActionCreator(text))
-  }
-
-  const onFocusTextarea = () => {
-    props.store.dispatch(updateNewTextareaActionCreator(''))
-  }
 
   return (
-    <Dialogs
-      massagePost={massagePost}
-      onChangeTextarea={onChangeTextarea}
-      onFocusTextarea={onFocusTextarea}
-      userData={props.store.getState().dialogsReducer.userData}
-      userMassage={props.store.getState().dialogsReducer.userMassage}
-      newChangeTextarea={props.store.getState().dialogsReducer.newChangeTextarea}
-    />
+    <ContextStore.Consumer>
+      {(value) => {
+        value.dispatch.bind(value.getState().dialogsReducer)
+        //debugger
+
+        const massagePost = (text) => {
+          if (text) {
+            value.dispatch(addMassageActionCreator(text))
+          }
+        }
+
+        const onChangeTextarea = (text) => {
+          value.dispatch(updateNewTextareaActionCreator(text))
+        }
+
+        const onFocusTextarea = () => {
+          value.dispatch(updateNewTextareaActionCreator(''))
+        }
+
+        return (
+          <Dialogs
+            massagePost={massagePost}
+            onChangeTextarea={onChangeTextarea}
+            onFocusTextarea={onFocusTextarea}
+            userData={value.getState().dialogsReducer.userData}
+            userMassage={value.getState().dialogsReducer.userMassage}
+            newChangeTextarea={value.getState().dialogsReducer.newChangeTextarea}
+          />
+        )
+      }}
+    </ContextStore.Consumer>
   )
 };
 

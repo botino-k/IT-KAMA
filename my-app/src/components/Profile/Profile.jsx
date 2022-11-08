@@ -11,7 +11,7 @@ const Profile = (props) => {
         <h1>Имя пользователя</h1>
         <div>Описание пользователя</div>
       </div>
-      <MyPostsContainer store = {props.store} />
+      <MyPostsContainer />
     </section>
   )
 };

@@ -4,7 +4,7 @@ const DialogsPage = (props) => {
 
   return (
     <>
-      <DialogsContainer store = {props.store} />
+      <DialogsContainer />
     </>
   )
 };

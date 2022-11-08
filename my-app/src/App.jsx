@@ -15,8 +15,8 @@ function App(props) {
       <Header />
       <NavBar />
       <Routes>
-        <Route path="/profile" element={<Profile store={props.store} />} />
-        <Route path="/message/*" element={<DialogsPage store={props.store} />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/message/*" element={<DialogsPage />} />
         <Route path="/hookex" element={<HookWrapper />} />
         <Route path="/ref" element={<FileInput />} />
         <Route path="/classcomp" element={<ClassComponent />} />
